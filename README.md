@@ -47,7 +47,7 @@ alongside them. Your original plan/architecture doc remains untouched as a backu
 
 ## When NOT to Use
 
-- Routine session starts (just read session-state.md)
+- Routine session starts (just read START-HERE.md)
 - Single-file tasks with no multi-phase structure
 - Docs already split and session state exists
 - Quick questions or research tasks
@@ -57,7 +57,7 @@ alongside them. Your original plan/architecture doc remains untouched as a backu
 ```
 docs/
   overview.md              # ~50 lines, always safe to load
-  session-state.md         # ~30 lines, read first every session
+  START-HERE.md         # ~30 lines, read first every session
   plan.md                  # ~40 lines, compact checklist with links
   phases/
     phase-1-[name].md      # Only loaded during Phase 1

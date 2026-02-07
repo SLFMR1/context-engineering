@@ -5,7 +5,7 @@ description: >
   (1) Starting a new multi-phase project — to scaffold docs structure before the plan grows,
   (2) Existing plan/architecture doc exceeds ~200 lines — to split and restructure,
   (3) Context running low mid-session — to preserve state for the next session.
-  Do NOT invoke for routine session starts — read session-state.md directly instead.
+  Do NOT invoke for routine session starts — read START-HERE.md directly instead.
 ---
 
 # Context Engineering
@@ -18,7 +18,7 @@ available context before implementation begins.
 
 ### Scaffold Mode (new project, no docs yet)
 Ask: "Do you want me to set up the folder structure now, or wait until you have a plan?"
-- **Now** → create skeleton: overview.md, session-state.md, plan.md, phases/ folder.
+- **Now** → create skeleton: overview.md, START-HERE.md, plan.md, phases/ folder.
   Content goes into the right place from the start — no monolith to split later.
 - **Wait** → do nothing. Come back when docs exceed ~200 lines.
 
@@ -28,12 +28,12 @@ strategies and templates below. Move content to phase-specific files, create ses
 state, replace verbose plan with compact checklist.
 
 ### Emergency Mode (context running low)
-Immediately write session-state.md with current state, exact stopping point, and next
+Immediately write START-HERE.md with current state, exact stopping point, and next
 step. User starts fresh session from state file.
 
 ## When NOT to Use This Skill
 
-- Routine session starts (just read session-state.md directly)
+- Routine session starts (just read START-HERE.md directly)
 - Single-file tasks with no multi-phase structure
 - Docs are already split and session state exists
 - Quick questions or research tasks
@@ -78,17 +78,17 @@ Every line costs tokens across the entire session (auto-loaded every turn).
 ## Session Protocols
 
 ### Start
-1. Read session-state.md (~30 lines) — instant orientation
+1. Read START-HERE.md (~30 lines) — instant orientation
 2. MEMORY.md auto-loaded (keep it lean)
 3. Read ONLY the current phase doc
 4. Do NOT read full architecture doc, plan file, or completed phase docs
 
 ### Mid-Session
 - Run the Self-Check before every file read
-- If context feels heavy: update session-state.md preemptively
+- If context feels heavy: update START-HERE.md preemptively
 
 ### End
-1. Update session-state.md: what was done, what's next, blockers
+1. Update START-HERE.md: what was done, what's next, blockers
 2. Update MEMORY.md only for NEW learnings (not routine progress)
 
 ---
@@ -102,7 +102,7 @@ Every line costs tokens across the entire session (auto-loaded every turn).
 | New multi-phase project | Scaffold folder structure upfront | Low |
 | Architecture doc >200 lines | Split by phase | Medium (one-time) |
 | Plan file duplicates architecture | Replace with compact checklist | Low |
-| New sessions take 10+ min to orient | Add session-state.md | Low |
+| New sessions take 10+ min to orient | Add START-HERE.md | Low |
 | MEMORY.md >100 lines | Audit and trim to index-only | Low |
 
 ### Splitting Large Docs
@@ -113,7 +113,7 @@ docs/architecture.md                    # 1000 lines, always fully loaded
 
 AFTER:
 docs/overview.md                        # ~50 lines, always safe to load
-docs/session-state.md                   # ~30 lines, read first every session
+docs/START-HERE.md                   # ~30 lines, read first every session
 docs/plan.md                            # ~40 lines, compact checklist
 docs/phases/
   phase-1-[name].md                     # Only loaded during Phase 1
