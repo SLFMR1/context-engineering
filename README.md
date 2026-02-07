@@ -56,13 +56,14 @@ alongside them. Your original plan/architecture doc remains untouched as a backu
 
 ```
 docs/
-  overview.md              # ~50 lines, always safe to load
-  START-HERE.md         # ~30 lines, read first every session
-  plan.md                  # ~40 lines, compact checklist with links
+  overview.md                    # ~50 lines, always safe to load
+  START-HERE.md               # ~30 lines, read first every session
+  plan.md                        # ~40 lines, compact checklist with links
+  development_architecture.md    # ~60-120 lines, living doc of what's being built
   phases/
-    phase-1-[name].md      # Only loaded during Phase 1
-    phase-2-[name].md      # Only loaded during Phase 2
-  cross-cutting.md         # Shared concerns (testing, env vars)
+    phase-1-[name].md            # Only loaded during Phase 1
+    phase-2-[name].md            # Only loaded during Phase 2
+  cross-cutting.md               # Shared concerns (testing, env vars)
 ```
 
 ## License

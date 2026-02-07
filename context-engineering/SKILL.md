@@ -18,9 +18,18 @@ available context before implementation begins.
 
 ### Scaffold Mode (new project, no docs yet)
 Ask: "Do you want me to set up the folder structure now, or wait until you have a plan?"
-- **Now** → create skeleton: overview.md, START-HERE.md, plan.md, phases/ folder.
+- **Now** → create skeleton: overview.md, START-HERE.md, plan.md, development_architecture.md, phases/ folder.
   Content goes into the right place from the start — no monolith to split later.
 - **Wait** → do nothing. Come back when docs exceed ~200 lines.
+
+#### Development Architecture Document
+When scaffolding, always create a `development_architecture.md` alongside the other docs.
+This is a living document that describes the application being built (not the plan or process).
+It captures structural decisions, data models, key interfaces, and component relationships
+so that any agent — current or future — can understand the system without reading the full
+codebase. Keep it updated as implementation progresses: each phase should refine or extend
+the architecture doc with what was actually built. Use a sub-agent for creation and updates
+when possible to avoid consuming the main agent's context window.
 
 ### Restructure Mode (existing project, docs too large)
 Assess the existing docs. If any file exceeds ~200 lines, propose splitting using the
@@ -60,6 +69,10 @@ Cross-cutting doc = content referenced by 2+ phases.
 ### 2. Progressive Loading
 Phase 3 work never loads Phase 1 details. Split large docs by phase.
 Read overview first (~50 lines), then only the current phase doc.
+**Exception — uncertainty:** When you hit a knowledge gap, ambiguity, or design question
+during implementation, check later phase docs for context before guessing or asking the user.
+Later phases often contain decisions, constraints, or interface contracts that resolve
+current-phase uncertainty. This is a targeted read (grep/skim), not a full load.
 
 ### 3. Session State File
 ~30-line file that orients any new session instantly. Updated every session end.
@@ -86,6 +99,8 @@ Every line costs tokens across the entire session (auto-loaded every turn).
 ### Mid-Session
 - Run the Self-Check before every file read
 - If context feels heavy: update START-HERE.md preemptively
+- If uncertain about a design choice: grep later phase docs before guessing
+- Update development_architecture.md when implementation changes structural decisions
 
 ### End
 1. Update START-HERE.md: what was done, what's next, blockers
@@ -115,6 +130,7 @@ AFTER:
 docs/overview.md                        # ~50 lines, always safe to load
 docs/START-HERE.md                   # ~30 lines, read first every session
 docs/plan.md                            # ~40 lines, compact checklist
+docs/development_architecture.md        # ~60-120 lines, living doc of what's being built
 docs/phases/
   phase-1-[name].md                     # Only loaded during Phase 1
   phase-2-[name].md                     # Only loaded during Phase 2
@@ -133,6 +149,33 @@ docs/cross-cutting.md                   # Shared: testing, env vars, monitoring
 ---
 
 ## Templates
+
+### Development Architecture (~60-120 lines)
+
+```markdown
+# Development Architecture — [Project]
+Last updated: [date]
+
+## System Overview
+[2-3 sentences: what the application does, who it serves]
+
+## Component Map
+[Key components/modules and their responsibilities — bullet list or simple diagram]
+
+## Data Model
+[Core entities, their relationships, and where they live (DB tables, API shapes, state)]
+
+## Key Interfaces
+[Important contracts between components: API endpoints, event shapes, shared types]
+
+## Technical Decisions
+| Decision | Rationale | Date |
+|----------|-----------|------|
+| [e.g., "Use Redis for caching"] | [Why] | [When] |
+
+## Infrastructure
+[Deployment, environment, external dependencies — keep brief]
+```
 
 ### Session State (~30 lines)
 
