@@ -106,6 +106,24 @@ Every line costs tokens across the entire session (auto-loaded every turn).
 1. Update START-HERE.md: what was done, what's next, blockers
 2. Update MEMORY.md only for NEW learnings (not routine progress)
 
+### Phase Completion Handoff
+After completing a phase (docs updated, build verified), generate a **new-session prompt**
+for the user and instruct them to start a fresh session. This keeps the next phase working
+with a clean context window instead of inheriting thousands of stale tokens from the
+completed phase.
+
+The prompt should be 3-5 lines, copy-paste ready:
+- Point to START-HERE.md + the next phase doc
+- State which phases are complete and which is next
+- Mention the branch name
+- Include any critical context (e.g. "backend running on port 3001")
+
+Example:
+```
+Read `docs/dev-activity/START-HERE.md` first, then `docs/dev-activity/phases/phase-6-frontend-widgets.md`.
+We're continuing Phase 6. Phases 1-5 are complete. Branch is `dev-activity-phil`.
+```
+
 ---
 
 ## Strategies
